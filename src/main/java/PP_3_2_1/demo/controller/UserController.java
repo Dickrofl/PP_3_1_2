@@ -2,6 +2,7 @@ package PP_3_2_1.demo.controller;
 
 import PP_3_2_1.demo.dao.UserDao;
 import PP_3_2_1.demo.model.User;
+import PP_3_2_1.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +16,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
 
     @Autowired
-    UserDao userService;
+    UserService userService;
 
     @GetMapping("/")
     public String getUsersPage(Model model) {
-        model.addAttribute("newuser", new User());
         model.addAttribute("user", userService.getAllUsers());
         return "index";
+    }
+
+    @GetMapping("/newUser")
+    public String newUser(Model model) {
+        model.addAttribute("newuser", new User());
+        return "newUser";
     }
 
     @PostMapping("/new")
@@ -47,5 +53,4 @@ public class UserController {
         userService.updateUser(user);
         return "redirect:/";
     }
-
 }

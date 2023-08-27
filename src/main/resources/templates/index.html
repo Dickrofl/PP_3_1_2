@@ -9,22 +9,8 @@
 <title>User Management</title>
 </head>
 <body>
-<h2>Add New User</h2>
-
-<form th:method="POST" th:action="@{/new}" th:object="${newuser}">
-    <label for="name">First Name</label>
-    <input type="text" th:field="*{firstName}" id="name"/>
-    <label for="lastname">Last Name</label>
-    <input type="text" th:field="*{lastName}" id="lastname"/>
-    <label for="email">Email</label>
-    <input type="text" th:field="*{email}" id="email"/>
-    <input type="submit" value="Add New User"/>
-</form>
-
-<br/>
 <h2>All Users</h2>
 <br/>
-
 <table border="1">
     <thead>
     <tr>
@@ -43,6 +29,9 @@
             <a th:href="@{'/delete/' + ${user.getId()}}">delete</a></td>
         </td>
     </tr>
+    <form th:action="@{/newUser}" method="get">
+        <input type="submit" value="New user"/>
+    </form>
     </tbody>
 </table>
 </body>
