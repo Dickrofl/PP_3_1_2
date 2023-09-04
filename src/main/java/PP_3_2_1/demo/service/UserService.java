@@ -1,8 +1,6 @@
 package PP_3_2_1.demo.service;
 
-
 import PP_3_2_1.demo.model.User;
-
 import java.util.List;
 
 public interface UserService {
